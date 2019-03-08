@@ -8,11 +8,21 @@ import { START_PICK_APPLE, FINISH_PICK_APPLE, ERROR_PICK_APPLE, EAT_APPLE } from
 function* showPostsAsync(action) {
     try {
         const response = yield call(fetch, './src/assets/json/model_60.json');
-        if (response.status != 200) yield put(ERROR_PICK_APPLE(response.statusText)); 
+        console.log(1111111111)
+        if (response.status != 200) yield put({ type: 'apple/ERROR_PICK_APPLE',
+    payload: new Error(response.statusText),
+    error: true
+  }); 
         let appleWeight = Math.floor(200 + Math.random() * 50);
-        yield put(FINISH_PICK_APPLE(appleWeight)); 
+        yield put({
+    type: 'apple/FINISH_PICK_APPLE',
+    payload: appleWeight,
+  }); 
     } catch(e) {
-        yield put(ERROR_PICK_APPLE(e));
+        yield put({ type: 'apple/ERROR_PICK_APPLE',
+    payload: new Error(e),
+    error: true
+  });
     }
 }
 

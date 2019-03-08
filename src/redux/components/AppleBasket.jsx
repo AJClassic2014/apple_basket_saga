@@ -80,7 +80,7 @@ class AppleBasket extends React.Component {
         {this.getAppleItem()}
       </div>
       <div className="btn-pick">
-        <Button picking={picking} pickApple={actions.pickApple} />
+        <Button picking={picking} pickApple={actions.stratPickApple} />
       </div>
     </div>);
   }

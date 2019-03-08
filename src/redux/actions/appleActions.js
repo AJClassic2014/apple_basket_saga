@@ -1,9 +1,9 @@
 const prefix = 'apple/';
 
-export const START_PICK_APPLE = 'apple/START_PICK_APPLE';
-export const FINISH_PICK_APPLE = 'apple/FINISH_PICK_APPLE';
-export const ERROR_PICK_APPLE = 'apple/ERROR_PICK_APPLE';
-export const EAT_APPLE = 'apple/EAT_APPLE';
+ export const START_PICK_APPLE = 'apple/START_PICK_APPLE';
+// export const FINISH_PICK_APPLE = 'finishPickApple';
+// export const ERROR_PICK_APPLE = 'errorPickApple';
+// export const EAT_APPLE = 'eatApple';
 
 let actions = {
 
