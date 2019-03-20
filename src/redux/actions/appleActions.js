@@ -1,10 +1,5 @@
 const prefix = 'apple/';
 
- export const START_PICK_APPLE = 'apple/START_PICK_APPLE';
-// export const FINISH_PICK_APPLE = 'finishPickApple';
-// export const ERROR_PICK_APPLE = 'errorPickApple';
-// export const EAT_APPLE = 'eatApple';
-
 let actions = {
 
   // pickApple: () => (dispatch, getState) => {

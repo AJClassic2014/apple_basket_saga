@@ -1,34 +1,22 @@
-import { takeEvery, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import { call, put } from 'redux-saga/effects';
-//import axios from 'axios';
-//import { BEGIN_GET_POSTS, GET_POSTS, GET_POSTS_ERROR } from '../reducers';
-import { START_PICK_APPLE, FINISH_PICK_APPLE, ERROR_PICK_APPLE, EAT_APPLE } from '../actions/appleActions';
+import actions from '../actions/appleActions';
 
 // worker saga
 function* showPostsAsync(action) {
     try {
         const response = yield call(fetch, './src/assets/json/model_60.json');
-        console.log(1111111111)
-        if (response.status != 200) yield put({ type: 'apple/ERROR_PICK_APPLE',
-    payload: new Error(response.statusText),
-    error: true
-  }); 
+        if (response.status != 200) yield put(actions.errorPickApple(response.statusText)); 
         let appleWeight = Math.floor(200 + Math.random() * 50);
-        yield put({
-    type: 'apple/FINISH_PICK_APPLE',
-    payload: appleWeight,
-  }); 
+        yield put(actions.finishPickApple(appleWeight)); 
     } catch(e) {
-        yield put({ type: 'apple/ERROR_PICK_APPLE',
-    payload: new Error(e),
-    error: true
-  });
+        yield put(actions.errorPickApple(e));
     }
 }
 
 // wacther saga
 function* watchGetPosts() {
-    yield takeLatest(START_PICK_APPLE, showPostsAsync);
+    yield takeLatest(actions.stratPickApple().type, showPostsAsync);
 }
 
 // root saga
